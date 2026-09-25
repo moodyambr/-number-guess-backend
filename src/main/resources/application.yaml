@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: number-guess
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/localdb?serverTimezone=UTC}
+    username: ${DB_USERNAME:root} #Detta värdena kan skrivas över av miljövariabler i Railway. Se docker-compose.yml för exempel.
+    password: ${DB_PASSWORD:password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update      # Auto-ändrar schema i dev
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true          # Visa SQL-loggar i dev
+
+frontend:
+  origin: ${FRONTEND_ORIGIN:http://localhost:8081}
+
+server:
+  port: ${PORT:8080}
