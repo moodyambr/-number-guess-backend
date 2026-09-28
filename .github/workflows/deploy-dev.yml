@@ -1,17 +1,5 @@
 name: Deploy Backend (DEV)
 
-# Bygger och pushar en Docker-image till Docker Hub, och triggar sedan en
-# deploy på Railways DEV-service via dess "Deploy Trigger"-webhook-URL.
-#
-# Secrets som krävs i detta repo (Settings → Secrets and variables → Actions):
-#   DOCKERHUB_USERNAME        — Docker Hub-användarnamn
-#   DOCKERHUB_TOKEN           — Docker Hub Access Token
-#   RAILWAY_DEPLOY_HOOK_DEV   — Deploy Trigger-URL för backend DEV-servicen på Railway
-#
-# OBS: secrets är inte tillagda ännu (görs Dag 3-4, se log.md/Planning.md).
-# Fram tills dess kommer detta jobb köras men faila på login/curl-stegen,
-# vilket är förväntat — workflown finns på plats redan från start enligt krav.
-
 on:
   push:
     branches: [dev]
@@ -35,7 +23,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/number-guess-backend-dev:dev
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/number-guess-backend:dev
 
       - name: Trigger deployment on Railway (dev)
         run: curl -X POST ${{ secrets.RAILWAY_DEPLOY_HOOK_DEV }}
