@@ -10,6 +10,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
+          MYSQL_DATABASE: localdb
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -uroot -p${{ secrets.TEST_DB_PASSWORD }}"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=10
+
     steps:
       - name: Checkout kod
         uses: actions/checkout@v7
@@ -24,6 +38,7 @@ jobs:
       - name: Bygg (kompilera)
         run: ./mvnw -B clean compile
 
-
       - name: Kör tester (unit + integration)
         run: ./mvnw -B verify
+        env:
+          DB_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
