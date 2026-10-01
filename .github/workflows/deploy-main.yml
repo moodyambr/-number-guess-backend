@@ -26,6 +26,6 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/number-guess-backend:main
 
       - name: Trigger deployment on Railway (main)
-        run: npx -y @railway/cli@latest redeploy --service backend-main --environment production --yes
+        run: npx -y @railway/cli@latest redeploy --service backend-main --yes
         env:
             RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
