@@ -26,4 +26,6 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/number-guess-backend:dev
 
       - name: Trigger deployment on Railway (dev)
-        run: curl -X POST ${{ secrets.RAILWAY_DEPLOY_HOOK_DEV }}
+        run: npx -y @railway/cli@latest redeploy --service backend-dev --environment dev --yes
+        env:
+            RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

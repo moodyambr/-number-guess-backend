@@ -47,6 +47,7 @@ build/
 ### Loggar ###
 *.log
 logs/
+pdf/
 
 ### AWS — nycklar och certifikat ###
 *.pem
