@@ -28,4 +28,4 @@ jobs:
       - name: Trigger deployment on Railway (main)
         run: npx -y @railway/cli@latest redeploy --service backend-main --environment production --yes
         env:
-            RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+            RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_PRODUCTION }}
