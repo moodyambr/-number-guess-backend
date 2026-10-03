@@ -55,8 +55,8 @@ Tester och driftsättning är separata flöden. En pull request kör tester men 
 
 Publika URL:er för backend är inte angivna.
 
-- **Development:** Ingen URL angiven (Railway-tjänst: `https://number-guess-backend-dev.up.railway.app/players/3`, miljö `dev`)
-- **Production:** Ingen URL angiven (Railway-tjänst: `https://ng-backend-main-production.up.railway.app/players/1`, miljö `production`)
+- **Development:** Railway-tjänst: (`https://number-guess-backend-dev.up.railway.app/players/3`)
+- **Production:**  Railway-tjänst: (`https://ng-backend-main-production.up.railway.app/players/1`)
 
 ### Github repository
 - **Frontend**(https://github.com/moodyambr/number-guess-frontend.git)
